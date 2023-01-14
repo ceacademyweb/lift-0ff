@@ -68,6 +68,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* <Route path="/logout">{setUser(null);}</Route> */}
         </Routes>
       </main>
       <Footer />

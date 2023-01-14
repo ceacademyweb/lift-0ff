@@ -27,14 +27,22 @@ function Video5({ url, copy }) {
   useEffect(() => {
     const player = new Playerjs({
       id: `player`,
-      file: url,
+      file: `${url}`,
       // autoplay: true,
     });
     const video = document.querySelector('.video-content video');
-    // video.play();
+    addEventListener('fullscreenchange', (event) => {
+      if (video.classList.contains('FullScreen')) {
+        video.classList.remove('FullScreen');
+      } else {
+        video.classList.add('FullScreen');
+      }
+    });
+
+    video.parentElement.classList.add('video-parent');
     const layer = document.createElement('div');
     const waterMark = document.createElement('div');
-    layer.className = 'layer-apuse';
+    layer.className = 'layer-apuse show';
     waterMark.className = 'waterMark pause';
     video.parentElement.insertAdjacentElement('afterBegin', layer);
     video.parentElement.firstChild.insertAdjacentElement('afterEnd', waterMark);
@@ -51,10 +59,12 @@ function Video5({ url, copy }) {
       waterMark.classList.remove('pause');
     });
   }, [url]);
-
+  const resize = (e) => {
+    console.log(e);
+  };
   return (
     <div className="video-content">
-      <div id="player"></div>
+      <div id="player" onResize={resize}></div>
     </div>
   );
 }

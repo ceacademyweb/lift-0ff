@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useParams } from 'react-router-dom';
 import addClass from '../utils/addClass.js';
 import api from '../api/api.js';
-import Video5 from '../components/Video5.jsx';
+import Video5 from '../components/Video5';
 
 const getVideos = async () => {
   const res = await api.get('/videos');
