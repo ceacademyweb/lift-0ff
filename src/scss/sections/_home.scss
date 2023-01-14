@@ -1,0 +1,56 @@
+.Main{
+  &__text{
+    h1{
+      font-weight: bold;
+      line-height: 1.1;
+      margin-bottom: 7%;
+      font-size: 8vw;
+      text-align: center;
+      @include from(l) {
+        font-size: 2.6vw;
+        text-align:left;
+      }
+      span{
+        --accent: 324, 58, 237;
+        --accent-gradient: linear-gradient(45deg, #{darken(#3434ff,20)}, #007fc3 30%, white 60%);
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+      }
+    }
+    p{
+      margin-bottom: 7%;
+      text-align: center;
+      font-size: 1.2em;
+      @include from(l){
+        text-align: left;
+      }
+    }
+  }
+  &__image{
+    display: flex;
+    justify-content: center;
+    img{
+      border-radius: 1em;
+      max-width: 70%;
+      box-shadow: 0 14px 54px 0 rgb(11 11 44 / 22%);
+      @include from(l){
+        max-height: 60vh;
+        max-width: unset;
+      }
+    }
+
+  }
+}
+.Main__buttons{
+  display: flex;
+  justify-content: center;
+  column-gap: 5%;
+  margin-bottom: 2em;
+  @include from(l){
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,40 @@
+#Testimony, #Banner{
+  background-color: var(--color-main);
+  color: #fefefe;
+  margin-top: var(--header-height);
+}
+.Testimony, .Banner{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  @include from(lg){
+    padding: 10vh 0;
+  }
+}
+.Banner{
+  margin-bottom: 2em;
+  @include from(lg){
+    margin-bottom: 10vh;
+
+  }
+  h2{
+  }
+}
+.Testimony__img{
+  img{
+    border-radius: .5rem;
+  }
+}.Testimony__text{
+  h2{
+    @include to(m){
+      font-size: 1.2em !important;
+    }
+    font-size: 1.8em !important;
+    // border-radius: .5rem;
+  }
+  p{
+    @include to(m) {
+        font-size: .9em !important;
+      }
+    font-size: 1.2em !important;
+  }
+}

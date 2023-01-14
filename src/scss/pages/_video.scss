@@ -1,0 +1,121 @@
+.Video{
+  @include from(m){
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  @include from(lg){
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__container{
+    @include from(700px){
+      display: grid;
+      grid-template-columns: 1fr 40%;
+      column-gap: 1em;
+    }
+    @include tablet(){
+      display: block;
+    }
+    @include tabletLandscape() {
+      display: grid;
+      column-gap: 2em;
+      grid-template-columns: 1fr 30%;
+    }
+    @include from(lg){
+      column-gap: 4em;
+      grid-template-columns: 1fr 30%;
+    }
+  }
+  &__title{
+    margin-bottom: 0;
+    margin-top: .5em;
+    font-size: 1.3em !important;
+  }
+  &__content{
+    margin-bottom: 2em;
+    @include from(700px) {
+      margin-bottom: 0;
+    }
+    @include tablet() {
+      margin-bottom: 2em;
+    }
+    @include tabletLandscape(){
+      margin-bottom: 0;
+    }
+  }
+  &__list{
+    background: #fff;
+    padding: 1em;
+    border: 1px solid rgba(#000,.1);
+    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+    border-radius: .3rem;
+    h3{
+      text-align: center;
+    }
+    .face-container{
+      display: flex;
+      flex-direction: column;
+      a{
+        padding: .75em 1em;
+        display: block;
+        background-color: darken(#f9fafb,3);
+        border-radius: .3rem;
+        margin-bottom: 1em;
+        border:1px solid darken(#f9fafb, 8);
+        opacity: .9;
+      }
+    }
+    li{
+      margin-bottom: .75em;
+      @include from(lg){
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+pjsdiv {
+  /* opacity: 0.3; */
+  position: relative;
+  overflow: hidden;
+}
+
+.layer-apuse {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  /* opacity: 0; */
+  /* visibility: hidden; */
+}
+
+.layer-apuse.show {
+  display: block;
+}
+
+.waterMark {
+  background: rgba(0, 0, 0, 0.2);
+  line-height: 2em;
+  padding: 0 1em;
+  position: absolute;
+  opacity: 1;
+  top: var(--top);
+  left: var(--left);
+  color: #fff;
+  opacity: .2;
+  display: none;
+}
+
+.waterMark.show {
+  display: block;
+}
+
+.waterMark.pause {
+  display: block;
+  top: unset;
+  left: 50%;
+  bottom: 15%;
+  opacity: 1;
+  font-size: 1.5em;
+  color: #fff;
+  transform: translateX(-50%);
+}
