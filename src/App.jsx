@@ -45,6 +45,7 @@ function App() {
       <Header />
       <main>
         <Routes>
+          <Route path="/registro" element={<Registro />} />
           <Route
             path="/login"
             element={<Login user={user} setUserFn={setUserFn} />}
