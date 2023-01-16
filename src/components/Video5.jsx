@@ -22,7 +22,7 @@ setInterval(() => {
   );
 }, 10000);
 
-function Video5({ url, copy }) {
+function Video5({ url, copy, copyBg }) {
   const videoUrl = useState(url);
   useEffect(() => {
     const player = new Playerjs({
@@ -43,7 +43,7 @@ function Video5({ url, copy }) {
     const layer = document.createElement('div');
     const waterMark = document.createElement('div');
     layer.className = 'layer-apuse show';
-    waterMark.className = 'waterMark pause';
+    waterMark.className = `waterMark pause ${copyBg}`;
     video.parentElement.insertAdjacentElement('afterBegin', layer);
     video.parentElement.firstChild.insertAdjacentElement('afterEnd', waterMark);
     waterMark.innerText = copy;

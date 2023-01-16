@@ -16,12 +16,13 @@ const Video = ({ user, videos }) => {
   useEffect(() => {
     // if (!videos) {
     setVideo(videos.find((v) => v._id === id));
+    console.log(video.bg);
   }, [id]);
   return (
     <section className="section Video">
       <div className="Video__container">
         <div className="Video__content">
-          <Video5 url={video.url} copy={user.email} />
+          <Video5 url={video.url} copy={user.email} copyBg={video.bg} />
           <p className="Video__title">
             {video.pos}. {video.name}
           </p>
