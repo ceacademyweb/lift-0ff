@@ -120,6 +120,9 @@ pjsdiv {
   color: #000;
   opacity: .4;
   display: none;
+  @include to(m){
+    transform: scale(.85);
+  }
   &.dark{
     opacity: .3;
     color: #fff !important;
