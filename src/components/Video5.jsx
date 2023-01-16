@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -24,6 +24,7 @@ setInterval(() => {
 
 function Video5({ url, copy, copyBg }) {
   const videoUrl = useState(url);
+  // const video = useRef();
   useEffect(() => {
     const player = new Playerjs({
       id: `player`,
@@ -31,7 +32,9 @@ function Video5({ url, copy, copyBg }) {
       // autoplay: true,
     });
     const video = document.querySelector('.video-content video');
+    // console.log(video.current);
     addEventListener('fullscreenchange', (event) => {
+      console.log('alert');
       if (video.classList.contains('FullScreen')) {
         video.classList.remove('FullScreen');
       } else {
@@ -65,6 +68,7 @@ function Video5({ url, copy, copyBg }) {
   return (
     <div className="video-content">
       <div id="player" onResize={resize}></div>
+      {/* <video src={url} class="video" ref={video} controls></video> */}
     </div>
   );
 }
