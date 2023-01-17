@@ -64,7 +64,12 @@ function App() {
             path="/"
             element={
               <ProtectedRoute user={user}>
-                <Media2 videos={videos} setVideosFn={setVideosFn} user={user} />
+                <Media2
+                  videos={videos}
+                  setVideosFn={setVideosFn}
+                  user={user}
+                  setUserFn={setUserFn}
+                />
               </ProtectedRoute>
             }
           />
