@@ -8,7 +8,7 @@ const getVideos = async () => {
   console.log(res.data);
   return res.data;
 };
-const Media2 = ({ videos, setVideosFn }) => {
+const Media2 = ({ videos, setVideosFn, user }) => {
   addClass();
   const [videosNew, setVideosNew] = useState(videos || []);
   useEffect(() => {
@@ -27,6 +27,7 @@ const Media2 = ({ videos, setVideosFn }) => {
   // console.log(videosNew);
   return (
     <section className="section Media">
+      <div className="welcome">Bienvenido {user.name}</div>
       <h1 style={{ textAlight: 'center' }}>Fase 1</h1>
       <ul className="video-container">
         {videosNew.map((video) => (

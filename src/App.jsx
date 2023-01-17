@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AOS from 'aos';
+import api from './api/api';
 import Header from './components/Header';
 import Index from './pages/Index';
 import Footer from './components/Footer';
@@ -42,6 +43,9 @@ function App() {
       useClassNames: true,
       // once: true,
     });
+    api.get('/videos').then((res) => {
+      console.log(res);
+    });
   }, []);
   return (
     <>
@@ -60,7 +64,7 @@ function App() {
             path="/"
             element={
               <ProtectedRoute user={user}>
-                <Media2 videos={videos} setVideosFn={setVideosFn} />
+                <Media2 videos={videos} setVideosFn={setVideosFn} user={user} />
               </ProtectedRoute>
             }
           />

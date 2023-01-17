@@ -32,14 +32,7 @@ const Header = (user, setUserFn) => {
       <span to={'/'} className="main-logo">
         <img src={logo} alt="Logotipo" />
       </span>
-      <p className="user-name-header">
-        Bienvenido {userNew ? userNew.name : 'nombre'}
-        {/* <i
-          title="Cerrar Sesión"
-          className="fa-solid fa-right-from-bracket"
-          onClick={logout}
-        ></i> */}
-      </p>
+
       {/* <nav className="main-nav">
         <Hamburger active={active} action={ToggleMenuFunction} />
         <Menu active={active} action={ToggleMenuFunction} />

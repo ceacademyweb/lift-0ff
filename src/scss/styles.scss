@@ -74,3 +74,17 @@ $legacy : true; // Soporte para versiones antiguas
   width: 500px;
   background-color: lime;
 }
+.welcome{
+  position: absolute;
+  top: 30px;
+  right: 10%;
+  z-index: 100;
+  @media (orientation: portrait) {
+    // background-color: lime;
+    right: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(50%);
+    top: calc(var(--header-height) - 0em)
+  }
+}
