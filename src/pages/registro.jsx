@@ -16,9 +16,9 @@ const resDrow = (name) => {
         !Gracias por tu registro ${name}!
       </h2>
       <p>
-        Estamos validado tus datos, si está todo eb orden racibiráns un correo con tu usuario y contraseña directo en tu email.
+        Estamos validando tus datos. De estar todo en orden recibirás un correo con usuario y contraseña directo a tu mail.
       </p>
-      <a href="/">Cerrar</a>
+      <a class="btn btn.dark" href="/">Cerrar</a>
     </div>
   `;
   document.body.appendChild(modalRes);
