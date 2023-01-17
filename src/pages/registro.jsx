@@ -95,7 +95,7 @@ const Registro = (e) => {
             backOverlayColor: 'rgba(0,0,0,.5)',
           },
         });
-        Notify.failure('El Correo Electrónico ya esta en uso');
+        Notify.failure('El correo electrónico ya esta en uso');
         console.log(err);
       });
     console.log(user);
