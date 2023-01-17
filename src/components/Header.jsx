@@ -19,11 +19,12 @@ const Header = (user, setUserFn) => {
     setUserNew(null);
     setUserFn(null);
     sessionStorage.removeItem('user');
+    location.href = '/';
   };
   useEffect(() => {
     console.log(userNew);
     if (!userNew) {
-      location.href = '/';
+      // location.href = '/';
     }
   }, [userNew]);
   return (
@@ -33,11 +34,11 @@ const Header = (user, setUserFn) => {
       </span>
       <p className="user-name-header">
         Bienvenido {userNew ? userNew.name : 'nombre'}
-        <i
+        {/* <i
           title="Cerrar Sesión"
           className="fa-solid fa-right-from-bracket"
           onClick={logout}
-        ></i>
+        ></i> */}
       </p>
       {/* <nav className="main-nav">
         <Hamburger active={active} action={ToggleMenuFunction} />
