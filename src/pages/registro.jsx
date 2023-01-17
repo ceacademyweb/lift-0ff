@@ -4,6 +4,7 @@ import addClass from '../utils/addClass';
 import Slider from './login/Slider';
 import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const resDrow = (name) => {
   console.log('llega');
@@ -31,7 +32,6 @@ const Registro = (e) => {
     name: '',
     email: '',
     lastName: '',
-    email: '',
     address: '',
     discordId: '',
     telegramId: '',
@@ -66,8 +66,8 @@ const Registro = (e) => {
         'content-type': 'application/json',
       },
     };
-    axios('https://ceacademy-auth-production.up.railway.app/users', options)
-      // axios('http://localhost:5000/users', options)
+    // axios('https://ceacademy-auth-production.up.railway.app/users', options)
+    axios('http://localhost:5000/users', options)
       .then((res) => {
         console.log(res);
         button.innerHTML = 'correcto';
@@ -80,7 +80,22 @@ const Registro = (e) => {
         // navigate('/media');
       })
       .catch((err) => {
-        e.target.querySelector('button').innerHTML = 'error';
+        e.target.querySelector('button').innerHTML = 'Registrar';
+        Notify.init({
+          position: 'center-top',
+          timeout: 3000,
+          backOverlay: true,
+          failure: {
+            background: 'darkred',
+            textColor: '#fff',
+            childClassName: 'notiflix-notify-failure',
+            notiflixIconColor: 'rgba(255,255,255,.9)',
+            fontAwesomeClassName: 'fas fa-times-circle',
+            fontAwesomeIconColor: 'rgba(255,255,255,.9)',
+            backOverlayColor: 'rgba(0,0,0,.5)',
+          },
+        });
+        Notify.failure('El Correo Electrónico ya esta en uso');
         console.log(err);
       });
     console.log(user);
