@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AOS from 'aos';
 import Header from './components/Header';
 import Index from './pages/Index';
@@ -20,6 +20,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [videos, setVideos] = useState(false);
   const [token, setToken] = useState(null);
+  const Logout = () => {
+    alert('Logout');
+  };
 
   const setUserFn = (currentUser, currentToken) => {
     setUser(currentUser);
@@ -42,7 +45,7 @@ function App() {
   }, []);
   return (
     <>
-      <Header />
+      <Header user={user} setUserFn={setUserFn} />
       <main>
         <Routes>
           <Route path="/registro" element={<Registro />} />
@@ -69,7 +72,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* <Route path="/logout">{setUser(null);}</Route> */}
         </Routes>
       </main>
       <Footer />

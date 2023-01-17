@@ -36,6 +36,8 @@ const Login = ({ user, setUserFn }) => {
         // console.log(res.data);
         // sessionStorage.setItem('token', res.data.token);
         setUserFn(res.data.userData, res.data.token);
+        sessionStorage.setItem('user', JSON.stringify(res.data.userData));
+        // sessionStorage.setItem('token', res.data.token);
         // console.log(user);
         // sessionStorage.setItem('user', JSON.stringify(res.data.userData));
         // const { decodedToken, isExpired, reEvaluateToken } = useJwt(res.data.token);
