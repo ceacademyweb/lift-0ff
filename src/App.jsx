@@ -74,10 +74,10 @@ function App() {
             }
           />
           <Route
-            path="/fase/1/:id"
+            path="/fase/:fase/:id"
             element={
               <ProtectedRoute user={user}>
-                <Video user={user} videos={videos} />
+                <Video user={user} videos={videos} setUserFn={setUserFn} />
               </ProtectedRoute>
             }
           />

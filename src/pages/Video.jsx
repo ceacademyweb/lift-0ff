@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, NavLink, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import addClass from '../utils/addClass.js';
 import api from '../api/api.js';
 import Video5 from '../components/Video5';
@@ -8,30 +9,62 @@ const getVideos = async () => {
   const res = await api.get('/videos');
   return res.data;
 };
-const Video = ({ user, videos }) => {
+const Video = ({ user, videos, setUserFn }) => {
   addClass();
+  const videoContainer = useRef();
   const { id } = useParams();
   const [videosNew, setVideosNew] = useState(videos);
   const [video, setVideo] = useState(videos.find((v) => v._id === id));
+  const [fase1, setFase1] = useState(videos.filter((f) => !f.fase) || []);
+  const [fase2, setFase2] = useState(videos.filter((f) => f.fase) || []);
+
   useEffect(() => {
     // if (!videos) {
     setVideo(videos.find((v) => v._id === id));
-    console.log(video.bg);
+    setFase1(videos.filter((f) => !f.fase));
+    setFase2(videos.filter((f) => f.fase));
+    const videoHeight = videoContainer.current.clientHeight;
+    document.documentElement.style.setProperty(
+      '--videoHeight',
+      `${videoHeight}px`
+    );
+    console.log(videoHeight);
   }, [id]);
+  const sessionClosed = () => {
+    setUserFn(null);
+    navigate('/');
+  };
   return (
     <section className="section Video">
-      <div className="Video__container">
+      <div className="welcome">
+        Bienvenido {user.name}
+        <i
+          style={{ opacity: '0.8', marginLeft: '.5em', cursor: 'pointer' }}
+          title="Cerrar Sesión"
+          className="fa-solid fa-right-from-bracket"
+          onClick={sessionClosed}
+        ></i>
+      </div>
+      <div className="Video__container" ref={videoContainer}>
         <div className="Video__content">
           <Video5 url={video.url} copy={user.email} copyBg={video.bg} />
           <p className="Video__title">
             {video.pos}. {video.name}
           </p>
         </div>
-        <div className="Video__list">
+        <div className="Video__list" style={{ height: 'var(--videoHeight)' }}>
           <div class="face-container">
             <h3>Fase 1</h3>
-            {videos.map((video) => (
+            {fase1.map((video) => (
               <NavLink to={`/fase/1/${video._id}`}>
+                {video.pos}. {video.name}
+              </NavLink>
+            ))}
+          </div>
+          <div class="face-container">
+            {/* <h3>Fase 2</h3> */}
+            {fase2.map((video) => (
+              <NavLink to={`/fase/2/${video._id}`}>
                 {video.pos}. {video.name}
               </NavLink>
             ))}
