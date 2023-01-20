@@ -23,7 +23,7 @@ const Video = ({ user, videos, setUserFn }) => {
     setVideo(videos.find((v) => v._id === id));
     setFase1(videos.filter((f) => !f.fase));
     setFase2(videos.filter((f) => f.fase));
-    contenedor.current.classList.remove('opacity');
+    contenedor.current.classList.remove('opacitynew');
     // console.log(videoHeight);
   }, [id]);
   const sessionClosed = () => {
@@ -31,7 +31,7 @@ const Video = ({ user, videos, setUserFn }) => {
     navigate('/');
   };
   return (
-    <section className="section Video opacity" ref={contenedor}>
+    <section className="section Video opacitynew" ref={contenedor}>
       <div className="welcome">
         Bienvenido {user.name}
         <i
