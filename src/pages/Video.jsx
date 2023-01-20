@@ -11,7 +11,6 @@ const getVideos = async () => {
 };
 const Video = ({ user, videos, setUserFn }) => {
   addClass();
-  const videoContainer = useRef();
   const { id } = useParams();
   const [videosNew, setVideosNew] = useState(videos);
   const [video, setVideo] = useState(videos.find((v) => v._id === id));
@@ -23,12 +22,8 @@ const Video = ({ user, videos, setUserFn }) => {
     setVideo(videos.find((v) => v._id === id));
     setFase1(videos.filter((f) => !f.fase));
     setFase2(videos.filter((f) => f.fase));
-    const videoHeight = videoContainer.current.clientHeight;
-    document.documentElement.style.setProperty(
-      '--videoHeight',
-      `${videoHeight}px`
-    );
-    console.log(videoHeight);
+
+    // console.log(videoHeight);
   }, [id]);
   const sessionClosed = () => {
     setUserFn(null);
@@ -45,9 +40,14 @@ const Video = ({ user, videos, setUserFn }) => {
           onClick={sessionClosed}
         ></i>
       </div>
-      <div className="Video__container" ref={videoContainer}>
+      <div className="Video__container">
         <div className="Video__content">
-          <Video5 url={video.url} copy={user.email} copyBg={video.bg} />
+          <Video5
+            url={video.url}
+            copy={user.email}
+            copyBg={video.bg}
+            // ref={videoContainer}
+          />
           <p className="Video__title">
             {video.pos}. {video.name}
           </p>

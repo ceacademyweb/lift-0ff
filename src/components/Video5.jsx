@@ -23,6 +23,7 @@ setInterval(() => {
 }, 10000);
 
 function Video5({ url, copy, copyBg }) {
+  const videoContainer = useRef();
   const videoUrl = useState(url);
   // const video = useRef();
   useEffect(() => {
@@ -31,6 +32,11 @@ function Video5({ url, copy, copyBg }) {
       file: `${url}`,
       // autoplay: true,
     });
+    const videoHeight = videoContainer.current.clientHeight;
+    document.documentElement.style.setProperty(
+      '--videoHeight',
+      `${videoHeight}px`
+    );
     const video = document.querySelector('.video-content video');
     // console.log(video.current);
     addEventListener('fullscreenchange', (event) => {
@@ -67,7 +73,7 @@ function Video5({ url, copy, copyBg }) {
   };
   return (
     <div className="video-content">
-      <div id="player" onResize={resize}></div>
+      <div id="player" onResize={resize} ref={videoContainer}></div>
       {/* <video src={url} class="video" ref={video} controls></video> */}
     </div>
   );
