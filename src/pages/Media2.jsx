@@ -38,6 +38,8 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           // sessionStorage.setItem('videos', res.data);
         })
         .catch((err) => setError(err));
+    } else {
+      contenedor.current.classList.remove('opacity');
     }
     // setVideosFn(videosNew);
   }, [videosNew]);
