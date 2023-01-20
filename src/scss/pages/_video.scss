@@ -68,8 +68,14 @@
     border: 1px solid rgba(#000,.1);
     box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
     border-radius: .3rem;
-    height: var(--videoHeight);
     overflow-y: auto;
+    @include fromTo(l,xl){
+      max-height: calc(var(--videoHeight) - 20%);
+    }
+    @include from(2xl){
+      max-height: calc(var(--videoHeight) - 10%);
+
+    }
     h3{
       text-align: center;
     }
@@ -194,16 +200,16 @@ video{
 
   top: calc(var(--header-height) + 2em);
   // @include from(lg)
+  &:hover ul{
+    max-height: 15vh;
+  }
   @include from(xl){
     transform-origin: right top;
     transform: scale(.6);
-    &:hover ul{
-      max-height: 38vh;
-    }
 
   }
   & .show{
-    max-height: 38vh;
+    max-height: 15vh;
   }
   & .hidde{
     max-height: 0;

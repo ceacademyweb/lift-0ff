@@ -75,13 +75,13 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           onClick={sessionClosed}
         ></i>
       </div>
-      {/* <div className="etapas">
+      <div className="etapas">
         <div className="buttonEtapas" onClick={show}>
           <p className="btn btn-dark button">
             Etapas <i className="fa-solid fa-chevron-down"></i>
           </p>
           <ul className="fases-list">
-            {[1, 2, 3, 4, 5].map((el) => (
+            {[1, 2].map((el) => (
               <li key={el}>
                 <a href={`#fase${el}`} onClick={show1}>
                   Fase {el}
@@ -90,7 +90,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
             ))}
           </ul>
         </div>
-      </div> */}
+      </div>
       <h1 id="fase1" style={{ textAlight: 'center' }} className="fase">
         Fase 1
       </h1>
@@ -108,23 +108,23 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           </li>
         ))}
       </ul>
-      {/* <h1 id="fase2" style={{ textAlight: 'center' }} className="fase">
+      <h1 id="fase2" style={{ textAlight: 'center' }} className="fase">
         Fase 2
       </h1>
       <ul className="video-container">
-        {fase2.map((video) => (
+        {fase2.map((video, i) => (
           <li key={video.name}>
             <Link to={`/fase/2/${video._id}`}>
               <figure>
                 <img src={'/img/video-fondo.jpg'} alt={video.name} />
                 <figcaption>
-                  {video.pos}. {video.name}
+                  {i + 1}. {video.name}
                 </figcaption>
               </figure>
             </Link>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </section>
   );
 };

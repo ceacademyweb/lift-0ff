@@ -52,7 +52,7 @@ const Video = ({ user, videos, setUserFn }) => {
             {video.pos}. {video.name}
           </p>
         </div>
-        <div className="Video__list" style={{ height: 'var(--videoHeight)' }}>
+        <div className="Video__list">
           <div class="face-container">
             <h3>Fase 1</h3>
             {fase1.map((video) => (
@@ -62,7 +62,7 @@ const Video = ({ user, videos, setUserFn }) => {
             ))}
           </div>
           <div class="face-container">
-            {/* <h3>Fase 2</h3> */}
+            <h3>Fase 2</h3>
             {fase2.map((video) => (
               <NavLink to={`/fase/2/${video._id}`}>
                 {video.pos}. {video.name}
