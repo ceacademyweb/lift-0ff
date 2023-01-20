@@ -99,3 +99,9 @@
   }
 
 }
+.opacity{
+  opacity: 0;
+}
+.Media{
+  transition: opacity 0.3s;
+}

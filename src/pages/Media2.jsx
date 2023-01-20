@@ -18,6 +18,7 @@ const getVideos = async () => {
 const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   addClass();
   const menuFases = useRef();
+  const section = useRef();
   const btn = useRef();
   const contenedor = useRef();
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           setVideosFn(res.data);
           setFase1(res.data.filter((f) => !f.fase));
           setFase2(res.data.filter((f) => f.fase));
-
+          contenedor.current.classList.remove('opacity');
           // sessionStorage.setItem('videos', res.data);
         })
         .catch((err) => setError(err));
@@ -70,7 +71,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
     }
   };
   return (
-    <section className="section Media" ref={contenedor}>
+    <section className="section Media opacity" ref={contenedor}>
       <div className="welcome">
         Bienvenido {user.name}
         <i

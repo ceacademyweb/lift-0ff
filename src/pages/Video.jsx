@@ -12,6 +12,7 @@ const getVideos = async () => {
 const Video = ({ user, videos, setUserFn }) => {
   addClass();
   const { id } = useParams();
+  const contenedor = useRef();
   const [videosNew, setVideosNew] = useState(videos);
   const [video, setVideo] = useState(videos.find((v) => v._id === id));
   const [fase1, setFase1] = useState(videos.filter((f) => !f.fase) || []);
@@ -22,7 +23,7 @@ const Video = ({ user, videos, setUserFn }) => {
     setVideo(videos.find((v) => v._id === id));
     setFase1(videos.filter((f) => !f.fase));
     setFase2(videos.filter((f) => f.fase));
-
+    contenedor.current.classList.remove('opacity');
     // console.log(videoHeight);
   }, [id]);
   const sessionClosed = () => {
@@ -30,7 +31,7 @@ const Video = ({ user, videos, setUserFn }) => {
     navigate('/');
   };
   return (
-    <section className="section Video">
+    <section className="section Video opacity" ref={contenedor}>
       <div className="welcome">
         Bienvenido {user.name}
         <i
