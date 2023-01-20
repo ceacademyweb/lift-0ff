@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   BrowserView,
   MobileView,
@@ -17,6 +17,9 @@ const getVideos = async () => {
 };
 const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   addClass();
+  const menuFases = useRef();
+  const btn = useRef();
+  const contenedor = useRef();
   const navigate = useNavigate();
   const [videosNew, setVideosNew] = useState(videos || []);
   const [fase1, setFase1] = useState(videosNew.filter((f) => !f.fase) || []);
@@ -43,29 +46,31 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
     navigate('/');
   };
 
-  const show = ({ target }) => {
-    let t = target;
-    while (!t.classList.contains('buttonEtapas')) {
-      t = t.parentElement;
-    }
-    if (isMobile) {
-      t.parentElement.querySelector('ul').classList.toggle('show');
-      t.parentElement.querySelector('ul').classList.remove('hidde');
+  const show = (e) => {
+    e.preventDefault();
+    menuFases.current.classList.toggle('is-active');
+    if (e.target.hash) {
+      const offsetTop = document.querySelector(e.target.hash).offsetTop;
+      window.scroll({
+        top: offsetTop - 160,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
   };
-  const show1 = ({ target }) => {
-    let t = target;
-    while (!t.classList.contains('fases-list')) {
-      t = t.parentElement;
+  const show1 = (e) => {
+    e.preventDefault();
+    if (e.target.hash) {
+      const offsetTop = document.querySelector(e.target.hash).offsetTop;
+      window.scroll({
+        top: offsetTop - 160,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
-    // if (isMobile) {
-    console.log(t);
-    console.log('entra');
-    t.classList.add('hidde');
-    // }
   };
   return (
-    <section className="section Media">
+    <section className="section Media" ref={contenedor}>
       <div className="welcome">
         Bienvenido {user.name}
         <i
@@ -75,56 +80,80 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           onClick={sessionClosed}
         ></i>
       </div>
-      <div className="etapas">
-        <div className="buttonEtapas" onClick={show}>
-          <p className="btn btn-dark button">
-            Etapas <i className="fa-solid fa-chevron-down"></i>
-          </p>
-          <ul className="fases-list">
-            {[1, 2].map((el) => (
-              <li key={el}>
-                <a href={`#fase${el}`} onClick={show1}>
-                  Fase {el}
-                </a>
-              </li>
-            ))}
-          </ul>
+      <MobileView>
+        <div className="etapas-movile">
+          <div className="buttonEtapas-movile">
+            <p className="btn btn-dark button-movile" onClick={show}>
+              Etapas <i className="fa-solid fa-chevron-down"></i>
+            </p>
+            <ul className="fases-list-movile" ref={menuFases}>
+              {[1, 2].map((el) => (
+                <li key={el}>
+                  <a href={`#fase${el}`} onClick={show}>
+                    Fase {el}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-      <h1 id="fase1" style={{ textAlight: 'center' }} className="fase">
-        Fase 1
-      </h1>
-      <ul className="video-container" style={{ marginBottom: '10vh' }}>
-        {fase1.map((video) => (
-          <li key={video.name}>
-            <Link to={`/fase/1/${video._id}`}>
-              <figure>
-                <img src={'/img/video-fondo.jpg'} alt={video.name} />
-                <figcaption>
-                  {video.pos}. {video.name}
-                </figcaption>
-              </figure>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <h1 id="fase2" style={{ textAlight: 'center' }} className="fase">
-        Fase 2
-      </h1>
-      <ul className="video-container">
-        {fase2.map((video, i) => (
-          <li key={video.name}>
-            <Link to={`/fase/2/${video._id}`}>
-              <figure>
-                <img src={'/img/video-fondo.jpg'} alt={video.name} />
-                <figcaption>
-                  {i + 1}. {video.name}
-                </figcaption>
-              </figure>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      </MobileView>
+      <BrowserView>
+        <div className="etapas">
+          <div className="buttonEtapas">
+            <p className="btn btn-dark button">
+              Etapas <i className="fa-solid fa-chevron-down"></i>
+            </p>
+            <ul className="fases-list">
+              {[1, 2].map((el) => (
+                <li key={el}>
+                  <a href={`#fase${el}`} onClick={show1}>
+                    Fase {el}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </BrowserView>
+      <article className="fase-container" id="fase1">
+        <h1 style={{ textAlight: 'center' }} className="fase">
+          Fase 1
+        </h1>
+        <ul className="video-container" style={{ marginBottom: '10vh' }}>
+          {fase1.map((video) => (
+            <li key={video.name}>
+              <Link to={`/fase/1/${video._id}`}>
+                <figure>
+                  <img src={'/img/video-fondo.jpg'} alt={video.name} />
+                  <figcaption>
+                    {video.pos}. {video.name}
+                  </figcaption>
+                </figure>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article className="fase-container" id="fase2">
+        <h1 style={{ textAlight: 'center' }} className="fase">
+          Fase 2
+        </h1>
+        <ul className="video-container">
+          {fase2.map((video, i) => (
+            <li key={video.name}>
+              <Link to={`/fase/2/${video._id}`}>
+                <figure>
+                  <img src={'/img/video-fondo.jpg'} alt={video.name} />
+                  <figcaption>
+                    {i + 1}. {video.name}
+                  </figcaption>
+                </figure>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </article>
     </section>
   );
 };
