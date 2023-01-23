@@ -66,8 +66,8 @@ const Registro = (e) => {
         'content-type': 'application/json',
       },
     };
-    // axios('https://ceacademy-auth-production.up.railway.app/users', options)
-    axios('http://localhost:5000/users', options)
+    axios('https://ceacademy-auth-production.up.railway.app/users', options)
+      // axios('http://loaddcalhost:5000/users', options)
       .then((res) => {
         console.log(res);
         button.innerHTML = 'correcto';
@@ -80,6 +80,7 @@ const Registro = (e) => {
         // navigate('/media');
       })
       .catch((err) => {
+        console.log(err);
         e.target.querySelector('button').innerHTML = 'Registrar';
         Notify.init({
           position: 'center-top',
