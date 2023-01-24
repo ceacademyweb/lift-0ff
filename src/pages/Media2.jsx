@@ -17,37 +17,34 @@ const getVideos = async () => {
 };
 const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   addClass();
-  window.scroll(0, 0);
   const menuFases = useRef();
   const section = useRef();
   const btn = useRef();
   const contenedor = useRef();
   const navigate = useNavigate();
   const [videosNew, setVideosNew] = useState(videos || []);
-  const [fase1, setFase1] = useState(videosNew.filter((f) => !f.fase) || []);
-  const [fase2, setFase2] = useState(videosNew.filter((f) => f.fase) || []);
-  const [fase3, setFase3] = useState(
-    videosNew.filter((f) => f.fase == 3) || []
-  );
+  const [fase1, setFase1] = useState([]);
+  const [fase2, setFase2] = useState([]);
+  const [fase3, setFase3] = useState([]);
   useEffect(() => {
-    if (!videos) {
-      api
-        .get('/videos')
-        .then((res) => {
-          setVideosNew(res.data);
-          setVideosFn(res.data);
-          setFase1(res.data.filter((f) => !f.fase));
-          setFase2(res.data.filter((f) => f.fase == 2));
-          setFase3(res.data.filter((f) => f.fase == 3));
-          console.log(res.data);
-          // setFase2(res.data.filter((f) => f.fase == 3));
-          contenedor.current.classList.remove('opacity');
-          // sessionStorage.setItem('videos', res.data);
-        })
-        .catch((err) => setError(err));
-    } else {
-      contenedor.current.classList.remove('opacity');
-    }
+    // if (!videos) {
+    api
+      .get('/videos')
+      .then((res) => {
+        setVideosNew(res.data);
+        setVideosFn(res.data);
+        setFase1(res.data.filter((f) => !f.fase));
+        setFase2(res.data.filter((f) => f.fase == 2));
+        setFase3(res.data.filter((f) => f.fase == 3));
+        console.log(res.data);
+        // setFase2(res.data.filter((f) => f.fase == 3));
+        contenedor.current.classList.remove('opacity');
+        // sessionStorage.setItem('videos', res.data);
+      })
+      .catch((err) => setError(err));
+    // } else {
+    //   contenedor.current.classList.remove('opacity');
+    // }
     // setVideosFn(videosNew);
   }, [videosNew]);
   // console.log(videosNew);
