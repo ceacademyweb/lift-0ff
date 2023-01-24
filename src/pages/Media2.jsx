@@ -17,6 +17,7 @@ const getVideos = async () => {
 };
 const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   addClass();
+  window.scroll(0, 0);
   const menuFases = useRef();
   const section = useRef();
   const btn = useRef();
@@ -25,6 +26,9 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   const [videosNew, setVideosNew] = useState(videos || []);
   const [fase1, setFase1] = useState(videosNew.filter((f) => !f.fase) || []);
   const [fase2, setFase2] = useState(videosNew.filter((f) => f.fase) || []);
+  const [fase3, setFase3] = useState(
+    videosNew.filter((f) => f.fase == 3) || []
+  );
   useEffect(() => {
     if (!videos) {
       api
@@ -33,7 +37,10 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           setVideosNew(res.data);
           setVideosFn(res.data);
           setFase1(res.data.filter((f) => !f.fase));
-          setFase2(res.data.filter((f) => f.fase));
+          setFase2(res.data.filter((f) => f.fase == 2));
+          setFase3(res.data.filter((f) => f.fase == 3));
+          console.log(res.data);
+          // setFase2(res.data.filter((f) => f.fase == 3));
           contenedor.current.classList.remove('opacity');
           // sessionStorage.setItem('videos', res.data);
         })
@@ -108,7 +115,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
               Etapas <i className="fa-solid fa-chevron-down"></i>
             </p>
             <ul className="fases-list">
-              {[1, 2].map((el) => (
+              {[1, 2, 3].map((el) => (
                 <li key={el}>
                   <a href={`#fase${el}`} onClick={show1}>
                     Fase {el}
@@ -150,6 +157,25 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
                   <img src={'/img/video-fondo.jpg'} alt={video.name} />
                   <figcaption>
                     {i + 1}. {video.name}
+                  </figcaption>
+                </figure>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article className="fase-container" id="fase3">
+        <h1 style={{ textAlight: 'center' }} className="fase">
+          Fase 3
+        </h1>
+        <ul className="video-container">
+          {fase3.map((video, i) => (
+            <li key={video.name}>
+              <Link to={`/fase/3/${video._id}`}>
+                <figure>
+                  <img src={'/img/video-fondo.jpg'} alt={video.name} />
+                  <figcaption>
+                    {i + 1}. {video.name.toUpperCase()}
                   </figcaption>
                 </figure>
               </Link>

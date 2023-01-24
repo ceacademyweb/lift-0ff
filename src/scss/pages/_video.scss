@@ -201,7 +201,7 @@ video{
   top: calc(var(--header-height) + 2em);
   // @include from(lg)
   &:hover ul{
-    max-height: 15vh;
+    max-height: 15em;
   }
   @include from(xl){
     transform-origin: right top;
@@ -228,3 +228,7 @@ video{
 
   }
 }
+.face-container a{
+  text-transform: uppercase;
+}
+.fases-list{}
