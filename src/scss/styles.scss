@@ -88,3 +88,9 @@ $legacy : true; // Soporte para versiones antiguas
     top: calc(var(--header-height) - 0em)
   }
 }
+.Video__container{
+  height: 500px !important;;
+  @media screen and (orientation: portrait) {
+    height: 80vh !important;
+  }
+}

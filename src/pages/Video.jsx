@@ -11,7 +11,8 @@ const getVideos = async () => {
 };
 const Video = ({ user, videos, setUserFn }) => {
   addClass();
-  window.scrollTo(0, 0);
+  window.scrollTo(0, -300);
+  // window.scrollY = 0;
   // document.scrollTop = 0;
   const { id } = useParams();
   const contenedor = useRef();
@@ -23,7 +24,8 @@ const Video = ({ user, videos, setUserFn }) => {
   const [fase4, setFase4] = useState(videos.filter((f) => f.fase) || []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, -300);
+    // window.scrollY = 0;
     // if (!videos) {
     setVideo(videos.find((v) => v._id === id));
     setFase1(videos.filter((f) => !f.fase));

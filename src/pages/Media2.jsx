@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import addClass from '../utils/addClass.js';
 import api from '../api/api.js';
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const getVideos = async () => {
   const res = await api.get('/videos');
@@ -132,14 +133,14 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
         <ul className="video-container" style={{ marginBottom: '10vh' }}>
           {fase1.map((video) => (
             <li key={video.name}>
-              <Link to={`/fase/1/${video._id}`}>
+              <NavLink to={`/fase/1/${video._id}`}>
                 <figure>
                   <img src={'/img/video-fondo.jpg'} alt={video.name} />
                   <figcaption>
                     {video.pos}. {video.name}
                   </figcaption>
                 </figure>
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
