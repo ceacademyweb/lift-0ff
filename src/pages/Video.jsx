@@ -23,6 +23,7 @@ const Video = ({ user, videos, setUserFn }) => {
   const [fase4, setFase4] = useState(videos.filter((f) => f.fase) || []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // if (!videos) {
     setVideo(videos.find((v) => v._id === id));
     setFase1(videos.filter((f) => !f.fase));
