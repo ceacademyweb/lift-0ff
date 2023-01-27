@@ -96,7 +96,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
               Etapas <i className="fa-solid fa-chevron-down"></i>
             </p>
             <ul className="fases-list-movile" ref={menuFases}>
-              {[1, 2].map((el) => (
+              {[1, 2, 3, 4].map((el) => (
                 <li key={el}>
                   <a href={`#fase${el}`} onClick={show}>
                     Fase {el}
@@ -114,7 +114,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
               Etapas <i className="fa-solid fa-chevron-down"></i>
             </p>
             <ul className="fases-list">
-              {[1, 2, 3].map((el) => (
+              {[1, 2, 3, 4].map((el) => (
                 <li key={el}>
                   <a href={`#fase${el}`} onClick={show1}>
                     Fase {el}

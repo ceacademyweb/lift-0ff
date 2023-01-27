@@ -11,7 +11,8 @@ const getVideos = async () => {
 };
 const Video = ({ user, videos, setUserFn }) => {
   addClass();
-  window.scroll(0, 0);
+  window.scrollTo(0, 0);
+  // document.scrollTop = 0;
   const { id } = useParams();
   const contenedor = useRef();
   const [videosNew, setVideosNew] = useState(videos);
