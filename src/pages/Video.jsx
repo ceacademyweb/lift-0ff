@@ -19,6 +19,7 @@ const Video = ({ user, videos, setUserFn }) => {
   const [fase1, setFase1] = useState(videos.filter((f) => !f.fase) || []);
   const [fase2, setFase2] = useState(videos.filter((f) => f.fase) || []);
   const [fase3, setFase3] = useState(videos.filter((f) => f.fase) || []);
+  const [fase4, setFase4] = useState(videos.filter((f) => f.fase) || []);
 
   useEffect(() => {
     // if (!videos) {
@@ -26,6 +27,7 @@ const Video = ({ user, videos, setUserFn }) => {
     setFase1(videos.filter((f) => !f.fase));
     setFase2(videos.filter((f) => f.fase == 2));
     setFase3(videos.filter((f) => f.fase == 3));
+    setFase4(videos.filter((f) => f.fase == 4));
     contenedor.current.classList.remove('opacitynew');
     // console.log(videoHeight);
   }, [id]);
@@ -76,6 +78,14 @@ const Video = ({ user, videos, setUserFn }) => {
           <div class="face-container">
             <h3>Fase 3</h3>
             {fase3.map((video) => (
+              <NavLink to={`/fase/3/${video._id}`} key={video.id}>
+                {video.pos}. {video.name}
+              </NavLink>
+            ))}
+          </div>
+          <div class="face-container">
+            <h3>Fase 4</h3>
+            {fase4.map((video) => (
               <NavLink to={`/fase/3/${video._id}`} key={video.id}>
                 {video.pos}. {video.name}
               </NavLink>
