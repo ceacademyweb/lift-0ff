@@ -202,7 +202,6 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           ))}
         </ul>
       </article>
-      <p>...</p>
     </section>
   );
 };
