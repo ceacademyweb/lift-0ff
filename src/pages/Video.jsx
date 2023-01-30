@@ -22,6 +22,7 @@ const Video = ({ user, videos, setUserFn }) => {
   const [fase2, setFase2] = useState(videos.filter((f) => f.fase) || []);
   const [fase3, setFase3] = useState(videos.filter((f) => f.fase) || []);
   const [fase4, setFase4] = useState(videos.filter((f) => f.fase) || []);
+  const [fase5, setFase5] = useState(videos.filter((f) => f.fase) || []);
 
   useEffect(() => {
     window.scrollTo(0, -300);
@@ -32,6 +33,7 @@ const Video = ({ user, videos, setUserFn }) => {
     setFase2(videos.filter((f) => f.fase == 2));
     setFase3(videos.filter((f) => f.fase == 3));
     setFase4(videos.filter((f) => f.fase == 4));
+    setFase5(videos.filter((f) => f.fase == 5));
     contenedor.current.classList.remove('opacitynew');
     // console.log(videoHeight);
   }, [id]);
@@ -63,7 +65,7 @@ const Video = ({ user, videos, setUserFn }) => {
           </p>
         </div>
         <div className="Video__list">
-          <div class="face-container">
+          <div className="face-container">
             <h3>Fase 1</h3>
             {fase1.map((video) => (
               <NavLink to={`/fase/1/${video._id}`} key={video.id}>
@@ -79,7 +81,7 @@ const Video = ({ user, videos, setUserFn }) => {
               </NavLink>
             ))}
           </div>
-          <div class="face-container">
+          <div className="face-container">
             <h3>Fase 3</h3>
             {fase3.map((video) => (
               <NavLink to={`/fase/3/${video._id}`} key={video.id}>
@@ -87,9 +89,17 @@ const Video = ({ user, videos, setUserFn }) => {
               </NavLink>
             ))}
           </div>
-          <div class="face-container">
+          <div className="face-container">
             <h3>Fase 4</h3>
             {fase4.map((video) => (
+              <NavLink to={`/fase/3/${video._id}`} key={video.id}>
+                {video.pos}. {video.name}
+              </NavLink>
+            ))}
+          </div>
+          <div className="face-container">
+            <h3>Fase 5</h3>
+            {fase5.map((video) => (
               <NavLink to={`/fase/3/${video._id}`} key={video.id}>
                 {video.pos}. {video.name}
               </NavLink>
