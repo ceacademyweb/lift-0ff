@@ -16,7 +16,7 @@ const Login = ({ user, setUserFn }) => {
     const fd = new FormData(e.target);
     const dataForm = {
       email: fd.get('email'),
-      password: `${fd.get('password')} `,
+      password: fd.get('password'),
     };
     // console.log(dataForm)
     const button = e.target.querySelector('button');
