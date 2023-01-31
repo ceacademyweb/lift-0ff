@@ -19,6 +19,7 @@ const resDrow = (name) => {
       <p>
         Estamos validando tus datos. De estar todo en orden recibirás un correo con usuario y contraseña directo a tu mail.
       </p>
+      <p style="font-size:.85em">En caso de no aparecer en bandeja de entrada, revisa de favor tu bandeja de spam</p>
       <a class="btn btn.dark" href="/">Cerrar</a>
     </div>
   `;
@@ -66,6 +67,7 @@ const Registro = (e) => {
         'content-type': 'application/json',
       },
     };
+
     axios('https://ceacademy-auth-production.up.railway.app/users', options)
       // axios('http://loaddcalhost:5000/users', options)
       .then((res) => {
@@ -99,6 +101,7 @@ const Registro = (e) => {
         Notify.failure('El correo electrónico ya esta en uso');
         console.log(err);
       });
+
     console.log(user);
   };
   const handleChange = ({ target: { name, value } }) => {
