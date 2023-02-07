@@ -23,6 +23,7 @@ const Video = ({ user, videos, setUserFn }) => {
   const [fase3, setFase3] = useState(videos.filter((f) => f.fase) || []);
   const [fase4, setFase4] = useState(videos.filter((f) => f.fase) || []);
   const [fase5, setFase5] = useState(videos.filter((f) => f.fase) || []);
+  const [fase6, setFase6] = useState(videos.filter((f) => f.fase) || []);
 
   useEffect(() => {
     window.scrollTo(0, -300);
@@ -34,6 +35,7 @@ const Video = ({ user, videos, setUserFn }) => {
     setFase3(videos.filter((f) => f.fase == 3));
     setFase4(videos.filter((f) => f.fase == 4));
     setFase5(videos.filter((f) => f.fase == 5));
+    setFase6(videos.filter((f) => f.fase == 6));
     contenedor.current.classList.remove('opacitynew');
     // console.log(videoHeight);
   }, [id]);
@@ -100,6 +102,14 @@ const Video = ({ user, videos, setUserFn }) => {
           <div className="face-container">
             <h3>Fase 5</h3>
             {fase5.map((video) => (
+              <NavLink to={`/fase/3/${video._id}`} key={video.id}>
+                {video.pos}. {video.name}
+              </NavLink>
+            ))}
+          </div>
+          <div className="face-container">
+            <h3>Fase 6</h3>
+            {fase6.map((video) => (
               <NavLink to={`/fase/3/${video._id}`} key={video.id}>
                 {video.pos}. {video.name}
               </NavLink>
