@@ -225,7 +225,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
           ))}
         </ul>
       </article>
-      <article className="fase-container" id="fase5">
+      <article className="fase-container" id="fase6">
         <h1 style={{ textAlight: 'center' }} className="fase">
           Fase 6
         </h1>
