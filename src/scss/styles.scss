@@ -94,3 +94,15 @@ $legacy : true; // Soporte para versiones antiguas
     height: 80vh !important;
   }
 }
+@media screen and (min-width:1024px) {
+  .buttonEtapas-movile{
+    display: none;
+  }
+}
+
+@media screen and (min-width:764px) {
+  .buttonEtapas-movile{
+    transform-origin: center top;
+    transform: scale(.8);
+  }
+}
