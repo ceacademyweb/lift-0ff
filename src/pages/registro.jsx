@@ -144,6 +144,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="name">Nombre</label>
             <input
+              required
               type="text"
               name="name"
               id="name"
@@ -155,6 +156,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="lastName">Apellido</label>
             <input
+              required
               type="text"
               name="lastName"
               id="lastName"
@@ -166,6 +168,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="email1">Correo Electrónico</label>
             <input
+              required
               type="email"
               name="email"
               id="email1"
@@ -178,6 +181,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="address">Domicilio</label>
             <textarea
+              required
               name="address"
               id="address"
               placeholder=" "
@@ -186,6 +190,7 @@ const Registro = (e) => {
               rows="4"
             ></textarea>
             {/* <input
+              required
               type="text"
               name="address"
               id="address"
@@ -198,6 +203,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="discordId">Usuario de discord</label>
             <input
+              required
               type="text"
               name="discordId"
               id="discordId"
@@ -210,6 +216,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="telegramId">Usuario de telegram</label>
             <input
+              required
               type="text"
               name="telegramId"
               id="telegramId"
@@ -222,6 +229,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="phone">Numero de contacto</label>
             <input
+              required
               type="text"
               name="phone"
               id="phone"
@@ -234,6 +242,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="codeMember">Código de miembro</label>
             <input
+              required
               type="text"
               name="codeMember"
               id="codeMember"
@@ -246,6 +255,7 @@ const Registro = (e) => {
           {/* <div className="group">
             <label htmlFor="password">Contraseña</label>
             <input
+              required
               type="password"
               name="password"
               id="password"
@@ -257,6 +267,7 @@ const Registro = (e) => {
           <div className="group">
             <label htmlFor="password_validator">Repetir Contraseña</label>
             <input
+              required
               type="password"
               name="password_validator"
               id="password_validator"
