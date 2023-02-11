@@ -5,6 +5,7 @@ import Slider from './login/Slider';
 import { useJwt } from 'react-jwt';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import {ajax} from "../utils/ajax.js";
 const Login = ({ user, setUserFn }) => {
   addClass();
@@ -32,17 +33,36 @@ const Login = ({ user, setUserFn }) => {
     axios('https://ceacademy-auth-production.up.railway.app/login', options)
       // axios('http://localhost:5000/login', options)
       .then((res) => {
-        button.innerHTML = 'correcto';
         console.log(res.data);
-        // sessionStorage.setItem('token', res.data.token);
-        setUserFn(res.data.userData, res.data.token);
-        sessionStorage.setItem('user', JSON.stringify(res.data.userData));
-        // sessionStorage.setItem('token', res.data.token);
-        // console.log(user);
-        // sessionStorage.setItem('user', JSON.stringify(res.data.userData));
-        // const { decodedToken, isExpired, reEvaluateToken } = useJwt(res.data.token);
-        // console.log(decodedToken)
-        navigate('/');
+        if (res.data.status === 401) {
+          console.log('usuario incorrecto');
+          button.innerHTML = 'Ingresar';
+          Notify.init({
+            position: 'center-top',
+            timeout: 3000,
+            backOverlay: true,
+            failure: {
+              background: 'darkred',
+              textColor: '#fff',
+              childClassName: 'notiflix-notify-failure',
+              notiflixIconColor: 'rgba(255,255,255,.9)',
+              fontAwesomeClassName: 'fas fa-times-circle',
+              fontAwesomeIconColor: 'rgba(255,255,255,.9)',
+              backOverlayColor: 'rgba(0,0,0,.5)',
+            },
+          });
+          Notify.failure('Correo o contraseña icorrectos');
+        } else {
+          button.innerHTML = 'correcto';
+          setUserFn(res.data.userData, res.data.token);
+          sessionStorage.setItem('user', JSON.stringify(res.data.userData));
+          // sessionStorage.setItem('token', res.data.token);
+          // console.log(user);
+          // sessionStorage.setItem('user', JSON.stringify(res.data.userData));
+          // const { decodedToken, isExpired, reEvaluateToken } = useJwt(res.data.token);
+          // console.log(decodedToken)
+          navigate('/');
+        }
       })
       .catch((err) => {
         // e.target.querySelector('button').innerHTML='error'
