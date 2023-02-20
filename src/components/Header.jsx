@@ -33,13 +33,10 @@ const Header = (user, setUserFn) => {
         <img src={logo} alt="Logotipo" />
       </span>
 
-      {/* <nav className="main-nav">
+      <nav className="main-nav">
         <Hamburger active={active} action={ToggleMenuFunction} />
         <Menu active={active} action={ToggleMenuFunction} />
-      </nav> */}
-      {/* <NavLink to="/logout" className={'btn bt-dark'}>
-        Cerrar Sesión
-      </NavLink> */}
+      </nav>
     </header>
   );
 };

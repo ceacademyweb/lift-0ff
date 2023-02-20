@@ -6,13 +6,19 @@ const Menu = ({ active, action }) => {
     <ul className={`main-menu ${active ? 'is-active' : ''}`}>
       {menu.map((item) => (
         <li key={item.title} className="main-menu__item">
-          <NavLink
-            onClick={action}
-            className={'main-menu__link'}
-            to={item.link}
-          >
-            {item.title}
-          </NavLink>
+          {item.link.includes('http') ? (
+            <a href={item.link} onClick={action} className={'main-menu__link'}>
+              {item.title}
+            </a>
+          ) : (
+            <NavLink
+              onClick={action}
+              className={'main-menu__link'}
+              to={item.link}
+            >
+              {item.title}
+            </NavLink>
+          )}
         </li>
       ))}
     </ul>
