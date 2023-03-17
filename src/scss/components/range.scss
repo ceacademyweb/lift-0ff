@@ -175,6 +175,19 @@ input::-moz-focus-outer {
       border-color: $teal;
     }
   }
+  button{
+    height: 4em !important;
+    width: 10em !important;
+    position: relative;
+  }
+  button img{
+    position: absolute;
+    height: 80%;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .journal-container{
   @include from(m){

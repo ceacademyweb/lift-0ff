@@ -4,6 +4,7 @@ import addClass from '../utils/addClass.js';
 import { useNavigate } from 'react-router-dom';
 import api from "../api/api.js";
 import axios from "axios";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 const Journal = ({user, setUserFn }) => {
@@ -50,8 +51,11 @@ const Journal = ({user, setUserFn }) => {
 
   const submit = (e) => {
     e.preventDefault();
+    const Target = e.target;
+    const button = Target.querySelector('button')
     console.log('enviando')
     const fd = new FormData(e.target);
+    button.innerHTML = '<img src="/img/load.svg" alt="">';
     axios.post('https://ceacademy-auth-production.up.railway.app/journal', fd)
     // axios.post('http://localhost:5000/journal', fd)
     .then(res => {
@@ -60,10 +64,27 @@ const Journal = ({user, setUserFn }) => {
       const newElement = document.createElement('div');
       newElement.classList.add('journal-container__item');
       newElement.dataset.id = result.userId;
-      newElement.innerHTML = `
+      newElement.innerHTML = result.ext !== 'pdf'
+        ? `        
         <img src="${result.imagePath}" alt="${result._id}">
-      `
+        `
+        : `<embed type="application/pdf" src="${result.imagePath}" style="width:100%; height:auto"></result>`
       journalContainer.current.appendChild(newElement);
+      Notify.init({
+        position: 'center-top',
+        timeout: 3000,
+        backOverlay: true,
+        failure: {
+          background: 'darkgreen',
+          textColor: '#fff',
+          childClassName: 'notiflix-notify-success',
+          notiflixIconColor: 'rgba(255,255,255,.9)',
+          fontAwesomeClassName: 'fas fa-times-circle',
+          fontAwesomeIconColor: 'rgba(255,255,255,.9)',
+          backOverlayColor: 'rgba(0,0,0,.5)',
+        },
+      });
+      button.innerHTML  = 'Enviar';
     })
     .catch(err => {
       console.log(err)
@@ -124,7 +145,15 @@ const Journal = ({user, setUserFn }) => {
         {
           images? images.map((image, index) => (
             <div className="journal-container__item" key={index} data-id={image._id} >
+              {
+            image.ext==='pdf'
+              ?(
+              <embed type="application/pdf" src={image.imagePath} style={{width:"100%", height:"auto"}}></embed>
+              )
+              :(
               <img src={image.imagePath} alt="" data-id={image._id}/>
+              )
+              }
             </div>
           )) : null
         }
