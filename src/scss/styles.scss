@@ -6,7 +6,7 @@
 
 
 $breakpoints : (s : 0,
-  m : 768px,
+  m : 760px,
   lg : 1024px,
   l : 1024px,
   xl : 1400px,
@@ -49,6 +49,7 @@ $legacy : true; // Soporte para versiones antiguas
 @import "components/header";
 @import "components/footer";
 @import "components/modal";
+@import "components/range";
 
 @import "sections/sections";
 @import "sections/home";

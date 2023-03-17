@@ -3,10 +3,10 @@ const menu = [
     title: 'TRADEPLOY',
     link: 'https://tradeploy.ceacademy.world',
   },
-  // {
-  //   title: 'Nosotros',
-  //   link: '/nosotros',
-  // },
+  {
+    title: 'JOURNAL',
+    link: '/journal',
+  },
   // {
   //   title: 'Estudios en trading',
   //   link: '/trading',

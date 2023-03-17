@@ -15,6 +15,8 @@ import Test from './pages/Test';
 import Media2 from './pages/Media2.jsx';
 import ProtectedRoute from './components/ProtectedRoute';
 import Video from './pages/Video';
+import Journal from "./pages/Journal.jsx";
+import JournalShow from "./pages/JournalShow.jsx";
 
 function App() {
   // JSON.parse(sessionStorage.getItem('user')) || nul
@@ -70,6 +72,7 @@ function App() {
                   user={user}
                   setUserFn={setUserFn}
                 />
+
               </ProtectedRoute>
             }
           />
@@ -78,6 +81,27 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <Video user={user} videos={videos} setUserFn={setUserFn} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/journal"
+            element={
+              <ProtectedRoute user={user}>
+                <Journal videos={videos}
+                         setVideosFn={setVideosFn}
+                         user={user}
+                         setUserFn={setUserFn} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/journal/:id"
+            element={
+              <ProtectedRoute user={user}>
+                <JournalShow
+                         user={user}
+                         setUserFn={setUserFn} />
               </ProtectedRoute>
             }
           />
