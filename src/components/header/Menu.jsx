@@ -1,7 +1,14 @@
 import menu from '../../utils/menu';
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Menu = ({ active, action }) => {
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem('user')) || null
+  );
+  useEffect(() => {
+    // console.log(user.admin, 'userheader');
+  }, []);
   return (
     <ul className={`main-menu ${active ? 'is-active' : ''}`}>
       {menu.map((item) => (
@@ -21,6 +28,19 @@ const Menu = ({ active, action }) => {
           )}
         </li>
       ))}
+      {/* {
+        user.admin ? (
+          <li className="main-menu__item">
+            <NavLink
+              onClick={action}
+              className={'main-menu__link'}
+              to={'/admin/journal'}
+            >
+              Calificación
+            </NavLink>
+          </li>
+        ):null
+      } */}
     </ul>
   );
 };

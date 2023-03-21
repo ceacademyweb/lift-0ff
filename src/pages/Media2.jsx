@@ -57,6 +57,7 @@ const Media2 = ({ videos, setVideosFn, user, setUserFn }) => {
   // console.log(videosNew);
   const sessionClosed = () => {
     setUserFn(null);
+    sessionStorage.removeItem('user');
     navigate('/');
   };
 

@@ -17,6 +17,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Video from './pages/Video';
 import Journal from "./pages/Journal.jsx";
 import JournalShow from "./pages/JournalShow.jsx";
+import AdminRoute from "./components/AdminRoute.jsx";
+import JornalAdmin from "./pages/JournalAdmin.jsx";
+import JournalAdmin from "./pages/JournalAdmin.jsx";
 
 function App() {
   // JSON.parse(sessionStorage.getItem('user')) || nul
@@ -103,6 +106,13 @@ function App() {
                          user={user}
                          setUserFn={setUserFn} />
               </ProtectedRoute>
+            }
+          />
+          <Route path="/admin/journal"
+            element={
+              <AdminRoute user={user}>
+                <JournalAdmin user={user} setUserFn={setUserFn} />
+              </AdminRoute>
             }
           />
         </Routes>
