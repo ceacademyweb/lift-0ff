@@ -9,8 +9,6 @@
 // Font families
 $heading-font: 'Sarabun', sans-serif;
 $body-font: 'Sarabun', sans-serif;
-// $heading-font: 'olympialight', sans-serif;
-// $body-font: 'olympialight', sans-serif;
 
 // CSS variables for typography
 :root {
@@ -264,6 +262,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
+  font-weight: 100;
   font-family: $heading-font;
 }
+

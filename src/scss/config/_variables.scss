@@ -11,14 +11,16 @@ $linear-gradient: linear-gradient(to right, #3264f5 2%, #7004bc 82%);
 :root {
   --header-height: 75px;
   --font-size: 16px;
-
+  --padding-X: 1em ;
   @include from(m) {
     --header-height: 100px;
     --font-size: 15px;
+    --padding-X: 5%;
   }
 
   @include from(l) {
     --header-height: 100px;
+    --padding-X: 10%;
     //--font-size: #{get-vw(18px)};
   }
 
@@ -30,7 +32,6 @@ $linear-gradient: linear-gradient(to right, #3264f5 2%, #7004bc 82%);
     --font-size: 1vw;
   }
 }
-
 $z-back: -10;
 $z-normal: 1;
 $z-tooltip: 10;
